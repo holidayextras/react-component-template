@@ -13,8 +13,7 @@ var less = require('gulp-less');
 var runSequence = require('run-sequence');
 
 var NPM_JS = ['./src/**/*.js*'];
-var NPM_STYLES = ['./src/**/*.less', './src/**/*.css']
-var TEST_JS = ['./test/**/test*.js'];
+var NPM_STYLES = ['./src/**/*.less', './src/**/*.css'];
 var DEMO_JS = ['./demo/src/**/*.js*'];
 var DEMO_DEST = './demo/www/';
 var NPM_DEST = './lib/';
@@ -33,8 +32,7 @@ gulp.task('build', function() {
   return gulp.src(NPM_JS)
   .pipe(babel())
   .on('error', logError)
-  .pipe(gulp.dest(NPM_DEST))
-  .pipe(connect.reload());
+  .pipe(gulp.dest(NPM_DEST));
 });
 
 gulp.task('less', function() {
@@ -67,6 +65,7 @@ gulp.task('buildDemo', function() {
 gulp.task('watch', function() {
   watch(NPM_JS, function() {
     gulp.start('build');
+    gulp.start('buildDemo');
   });
 
   watch(NPM_STYLES, function() {

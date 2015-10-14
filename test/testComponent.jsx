@@ -1,13 +1,13 @@
 'use strict';
 
-var jsdom = require('mocha-jsdom')
+var jsdom = require('mocha-jsdom');
 var React = require('react');
 var TestUtils = require('react-addons-test-utils');
 var assert = require('assert');
 var HeHaLoading = require('../');
 
 describe('Loading component', function() {
-  
+
   jsdom();
   var HeHaLoadingInstance = null;
   var props = null;
@@ -21,7 +21,7 @@ describe('Loading component', function() {
   });
 
   it('is a valid React element', function() {
-    assert.ok(TestUtils.isElement(<HeHaLoading  {...props} />));
+    assert.ok(TestUtils.isElement(<HeHaLoading {...props} />));
   });
 
   describe('Component contents', function() {
