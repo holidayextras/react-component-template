@@ -10,6 +10,7 @@ var connect = require('gulp-connect');
 var watch = require('gulp-watch');
 var open = require('gulp-open');
 var less = require('gulp-less');
+var ghPages = require('gulp-gh-pages');
 var runSequence = require('run-sequence');
 
 var NPM_JS = ['./src/**/*.js*'];
@@ -17,6 +18,7 @@ var NPM_STYLES = ['./src/**/*.less', './src/**/*.css'];
 var DEMO_JS = ['./demo/src/**/*.js*'];
 var DEMO_DEST = './demo/www/';
 var NPM_DEST = './lib/';
+var GH_PAGES = DEMO_DEST + '**/*'
 
 function logError(error) {
   var errorString = error.toString();
@@ -97,6 +99,18 @@ gulp.task('open', function() {
     }));
 });
 
+// ----------------------------------
+// --------- DEPLOY TASKS -----------
+// ----------------------------------
+gulp.task('publish-docs', function() {
+  return gulp.src(GH_PAGES)
+    .pipe(ghPages())
+    .on('error', logError);
+});
+
+// ----------------------------------
+// --------- COMPOSITE TASKS --------
+// ----------------------------------
 gulp.task('start', function(cb) {
   return runSequence('build', 'buildDemo', 'less', 'connect', ['watch', 'open'], cb);
 });

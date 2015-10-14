@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel/register test/**/test*.jsx",
     "start": "gulp start",
-    "lint": "make-up src test"
+    "lint": "make-up src test",
+    "publish-docs": "gulp publish-docs"
   },
   "author": "",
   "license": "MIT",
