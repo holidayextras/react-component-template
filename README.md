@@ -21,6 +21,6 @@ Edit your tests in `test/` to fix failures.
 
 ### Checking code
 ```
-npm lint
+npm run lint
 ```
 Lints `src/` and `test/` directories.

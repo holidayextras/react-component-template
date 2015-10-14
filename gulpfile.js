@@ -111,6 +111,10 @@ gulp.task('publish-docs', function() {
 // ----------------------------------
 // --------- COMPOSITE TASKS --------
 // ----------------------------------
+gulp.task('build-all', function(cb) {
+  gulp.start('build', 'buildDemo', 'less');
+});
+
 gulp.task('start', function(cb) {
   return runSequence('build', 'buildDemo', 'less', 'connect', ['watch', 'open'], cb);
 });
