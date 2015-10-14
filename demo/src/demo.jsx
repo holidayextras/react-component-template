@@ -3,8 +3,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var props = {
-  mainTitle: "MainTitle",
-  subTitle: "SubTitle"
+  message: "I am a demo component"
 };
 
 ReactDOM.render(<Component {...props} />, document.getElementById("example"));

@@ -98,5 +98,5 @@ gulp.task('open', function() {
 });
 
 gulp.task('start', function(cb) {
-  return runSequence('build', 'buildDemo', 'connect', ['watch', 'open'], cb);
+  return runSequence('build', 'buildDemo', 'less', 'connect', ['watch', 'open'], cb);
 });
