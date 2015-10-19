@@ -12,6 +12,7 @@ var open = require('gulp-open');
 var less = require('gulp-less');
 var ghPages = require('gulp-gh-pages');
 var runSequence = require('run-sequence');
+var istanbul = require('gulp-jsx-coverage');
 
 var NPM_JS = ['./src/**/*.js*'];
 var NPM_STYLES = ['./src/**/*.less', './src/**/*.css'];
@@ -19,6 +20,7 @@ var DEMO_JS = ['./demo/src/**/*.js*'];
 var DEMO_DEST = './demo/www/';
 var NPM_DEST = './lib/';
 var GH_PAGES = DEMO_DEST + '**/*'
+var TESTS = ['./test/**/test*.jsx'];
 
 function logError(error) {
   var errorString = error.toString();
@@ -107,6 +109,22 @@ gulp.task('publish-docs', function() {
     .pipe(ghPages())
     .on('error', logError);
 });
+
+// ----------------------------------
+// ----------- TEST TASKS -----------
+// ----------------------------------
+gulp.task('test', istanbul.createTask({
+  src: TESTS,
+  istanbul: {
+    coverageVariable: 'COMPONENT_TEST_COVERAGE',
+    exclude: /node_modules/
+  },
+  threshold: 100,
+  thresholdType: 'lines',
+  coverage: {
+    reporters: ['text-summary']
+  }
+}));
 
 // ----------------------------------
 // --------- COMPOSITE TASKS --------
