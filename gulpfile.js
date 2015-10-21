@@ -19,7 +19,7 @@ var NPM_STYLES = ['./src/**/*.less', './src/**/*.css'];
 var DEMO_JS = ['./demo/src/**/*.js*'];
 var DEMO_DEST = './demo/www/';
 var NPM_DEST = './lib/';
-var GH_PAGES = DEMO_DEST + '**/*'
+var GH_PAGES = DEMO_DEST + '**/*';
 var TESTS = ['./test/**/test*.jsx'];
 
 function logError(error) {
@@ -129,7 +129,7 @@ gulp.task('test', istanbul.createTask({
 // ----------------------------------
 // --------- COMPOSITE TASKS --------
 // ----------------------------------
-gulp.task('build-all', function(cb) {
+gulp.task('build-all', function() {
   gulp.start('build', 'buildDemo', 'less');
 });
 
