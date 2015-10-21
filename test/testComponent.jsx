@@ -9,14 +9,13 @@ var Component = require('../');
 describe('Loading component', function() {
 
   jsdom();
-  var ComponentInstance = null;
   var props = null;
 
   beforeEach(function() {
     props = {
       message: 'foo'
     };
-    ComponentInstance = TestUtils.renderIntoDocument(<Component {...props} />);
+    TestUtils.renderIntoDocument(<Component {...props} />);
   });
 
   it('is a valid React element', function() {
